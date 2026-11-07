@@ -24,6 +24,9 @@ jobs:
           for z in parts/*.zip; do unzip -q -o "$z" -d build; done
           test -f build/life-map/index.html
           echo "Mushaf pages: $(ls build/life-map/mushaf/QPC1 | wc -l)  Fonts: $(ls build/life-map/fonts/QPC1 | wc -l)"
+          ls build/life-map/mushaf/QPC1 | head -5
+          ls build/life-map/fonts/QPC1 | head -3
+          grep -rhoE "mushaf/.{0,50}" build/life-map --include=*.html --include=*.js | head -8
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
